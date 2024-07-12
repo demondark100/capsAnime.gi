@@ -1,0 +1,215 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #0d0d0d;
+}
+
+
+/* cuando aun no hay resultados */
+.inicioContent{ /*contenedor*/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 450px;
+  overflow: hidden;
+}
+
+.inicioContent__info{ /*contenedor de la informacion*/
+    height: 80%;
+    width: 100%;
+    background: linear-gradient(180deg,#212121,#212121,#212121,transparent);
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 8px;
+    overflow: hidden;
+    transition-duration: 1s;
+    z-index: 3;
+}
+.inicioContent__infoHide{ /*ocultar informacion*/
+    top: -100%;
+    transition-duration: 1s;
+}
+
+.inicioContent__info h1{
+    color: #cafbca;
+    text-align: center;
+    width: 100%;
+    font-size: 2em;
+}
+.inicioContent__infoCenter{ /*contenedor de la informacion central*/
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.inicioContent__info h2{ /*parrafo indicativo*/
+    color: #cafbca;
+    font-size: 1.4em;
+    padding-left: 15px;
+}
+.inicioContent__info ol{ /*lista*/
+    color: #cafbca;
+    padding-left: 15px;
+    font-size: 1.4em;
+    list-style: none;
+}
+
+.inicioContent__info button{ /*boton para agregar el primer anime*/
+    background-color: transparent;
+    border: none;
+    outline: none;
+    background-color: #302e2e;
+    box-shadow: 0 0 15px 15px #302e2e;
+    margin-left: 15px;
+    width: 85px;
+    border-radius: 1000px;
+    margin-top: 25px;
+    animation-name: botonIniciar;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: .5s;
+    cursor: pointer;
+    color: #eeffbe;
+    font-size: 1.5em;
+}
+@keyframes botonIniciar {
+    0%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+
+.inicioContent__imgs{ /*contenedor de las imagenes*/
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 70%;
+    transition-duration: .5s;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition-duration: .2s;
+}
+.ExtendImage{ /*extender imagen*/
+    height: 100%;
+    overflow: hidden;
+    transition-duration: .3s;
+}
+.ExtendImage::before { /*escurecer umagen de fondo*/
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,#000000da,#000000a0,#000000da);
+    transition-duration: .5s;
+}
+
+
+/*preguntar si se mostrara el inicio de nuevo*/
+.showInicio{ /*contenedor*/
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #00000097 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px;
+    opacity: 1;
+    visibility: visible;
+    transition-duration: .3s;
+    z-index: 2;
+}
+.hideInicio{
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: .3s;
+}
+.showInicio__info{ /*contenedor de la pregunta*/
+    background-color: #242424;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+}
+.showInicio__info p{ /*parrafo de pregunta*/
+    color: #eeffbe;
+}
+.showInicio__info--btm{ /*contenedor de los botones*/
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}
+.showInicio__info--btm button{ /*botones*/
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.showInicio__info--btm button:nth-child(1){ /*btn1*/
+    color: #0f0;
+}
+.showInicio__info--btm button:nth-child(2){ /*btn2*/
+    color: #f00;
+}
+
+@media(min-width: 750px){
+    .inicioContent{ /*contenedor*/
+        flex-direction: row;
+    }
+    .inicioContent__info{ /*contenedor de la informacion*/
+        width: 70%;
+        height: 100vh;
+        background: linear-gradient(90deg,#212121,#212121,#212121,transparent);  
+        align-items: center;
+        top: 0;
+        left: 0;
+    }
+    .inicioContent__infoHide{ /*ocultar informacion*/
+        left: -100%;
+    }
+    .inicioContent__info h1{ /*titulo*/
+        font-size: 3em;
+    }
+
+    .inicioContent__info h2{ /*parrafo indicativo*/
+        padding: 0;
+        font-size: 2.5em;
+    }
+    .inicioContent__info ol{ /*lista*/
+        padding: 0;
+        font-size: 2em;
+    }
+    .inicioContent__info button a{ /*boton*/
+        font-size: 2em;
+    }
+    .inicioContent__imgs{ /*contenedor de las imagenes*/
+        top: 0;
+        width: 70%;
+        height: 100%;
+        right: 0;
+    }
+    .ExtendImage{ /*extender imagen*/
+        width: 100%;
+    }
+    .showInicio__info{ /*contenedor de la pregunta*/
+        width: auto;
+    }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./estilos/inicio.css">
+    <link rel="stylesheet" href="./estilos/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <!-- presentacion -->
+        <div class="inicioContent">
+            <div class="inicioContent__info">
+                <h1>Capitulos</h1>
+                <div class="inicioContent__infoCenter">
+                    <h2>Aqui vamos a:</h2>
+                    <ol>
+                        <li>1. Agregar animes que vemos.</li>
+                        <li>2. Agregar capitulos a cada anime.</li>
+                        <li>3. Apuntar en que capitulo nos quedamos.</li>
+                        <li>4. Redireccionarnos al capitulo deseado.</li>
+                    </ol>
+                </div>
+                <button class="btnInicio">iniciar</button>
+            </div>
+            <div class="inicioContent__imgs"></div>
+        </div>
+
+        <!-- pregunta -->
+        <div class="showInicio">
+            <div class="showInicio__info">
+                <p>¿Deseas mostrar el inicio de nuevo mas adelante?</p>
+                <div class="showInicio__info--btm">
+                    <button class="showInicio__btn1">Si</button>
+                    <button class="showInicio__btn2">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- animes -->
+        <div class="animesContent">
+            <div class="animesContent__animesContent">
+                <button class="animesContent__btn">+</button>
+            </div>
+        </div>
+        <!-- formulario de animes -->
+        <div class="formularioAddAnime formularioAddAnimeHide ">
+            <p class="formularioAddAnime__err">Debes rellenar todos los espacios correctamente y rellenar todos los espacios.</p>
+            <form class="formularioAddAnime__forn formularioAddAnime__fornHide">
+                <button class="formularioAddAnime__btnClose">X</button>
+                <input
+                    type="text" 
+                    placeholder="nombre del anime"
+                    class="formularioAddAnime__forn--nombre"
+                >
+                <select class="formularioAddAnime__forn--img">
+                    <option value="indefinido">selecciona tipo de imagen</option>
+                    <option value="link">usar un link</option>
+                    <option value="local">usar imagen local</option>
+                </select>
+                <input 
+                    type="text" 
+                    placeholder="link de la imagen del anime"
+                    class="formularioAddAnime__forn--linkImg"
+                >
+                <label 
+                    for="formularioAddAnime__imgLocal"
+                    class="formularioAddAnime__imgLocalLabel"
+                >
+                    seleccionar una imagen local
+                </label>
+                <input id="formularioAddAnime__imgLocal" type="file">
+                <textarea
+                    type="text"
+                    placeholder="descripcion del anime"
+                    class="formularioAddAnime__forn--descripcion"
+                ></textarea>
+                <input 
+                    type="number"
+                    placeholder="cantidad de capitulos"
+                    class="formularioAddAnime__forn--caps"
+                >
+                <input 
+                    type="number"
+                    placeholder="capitulos vistos"
+                    class="formularioAddAnime__forn--vistos"
+                >
+                <input 
+                    type="submit"
+                    value="Crear animes"
+                    class="formularioAddAnime__forn--btn"
+                    style="cursor: pointer;"
+                >
+            </form>
+        </div>
+
+        <div class="ContenidoAnime ContenidoAnimeHide">
+            <button class="ContenidoAnime__btnClose">X</button>
+            <div class="ContenidoAnime__info1">
+                <img class="ContenidoAnime__img">
+                <h2 class="ContenidoAnime__title"></h2>
+                <div class="ContenidoAnime__descripcion"></div>
+            </div>
+            <div class="ContenidoAnime__caps"></div>
+        </div>
+    </main>
+
+    <!-- cambiar de imagen al fondo -->
+    <script src="./scripts/fondo.js"></script>
+    <!-- boton de inicio -->
+    <script src="./scripts/inicio.js"></script>
+    <!-- cargar imagenes de los animes -->
+    <script type="module" src="./scripts/imgs.js"></script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+.animesContent{ /*contenedor principal*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.animesContent__animesContent{ /*contenedor de la infp*/
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.animesContent__animesContent button{ /*boton para agregar mas animes*/
+    background-color: #0000008a;
+    border: none;
+    outline: none;
+    color: #eeffbe;
+    font-size: 2em;
+    width: 100px;
+    height: 100px;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+
+
+
+
+
+/*formulario*/
+.formularioAddAnime{ /*contenedor principal*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #000000ca;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition-duration: .8s;
+    overflow: hidden;
+    min-height: 480px;
+}
+.formularioAddAnimeHide{ /*ocultar contenedor principañ*/
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: .8s;
+    pointer-events: none;
+}
+
+.formularioAddAnime__forn{ /*contenedor de los datos*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    gap: 25px;
+    position: absolute;
+    bottom: 0;
+    transition-duration: .5s;
+    padding-top: 25px;
+}
+.formularioAddAnime__fornHide{
+    bottom: -100%;
+    transition-duration: .5s;
+}
+.formularioAddAnime__forn--img{ /*seleccionar un tipo de imagen*/
+    width: 85%;
+    padding: 8px;
+    background-color: transparent;
+    border: 2px solid #3e413e;
+    box-shadow: 0 0 15px 5px #3e413e;
+    outline: none;
+    color: #eeffbe;
+    border-radius: 1000px;
+    overflow: hidden;
+}
+.formularioAddAnime__forn--img option{ /*seleccionar un tipo de imagen*/
+    color: #eeffbe;
+    background-color: #000000c4;
+    border: none;
+    outline: none;
+}
+
+.formularioAddAnime__forn input,label{ /*inputs*/
+    background-color: transparent;
+    border: 2px solid #3e413e;
+    padding: 8px;
+    border-radius: 1000px;
+    box-shadow: 0 0 15px 5px #3e413e;
+    width: 85%;
+    outline: none;
+    color: #eeffbe;
+}
+.formularioAddAnime__forn--linkImg{
+    display: none;
+}
+.formularioAddAnime__forn--descripcion{ /*dexripcion*/
+    height: 150px;
+    background-color: transparent;
+    box-shadow: 0 0 15px 5px #3e413e;
+    color: #eeffbe;
+    border-radius: 15px !important;
+    width: 85%;
+    padding: 8px;
+    resize: none;
+    outline: none;
+}
+.formularioAddAnime__forn input::placeholder{ /*inputs*/
+    color: #b7bea4;
+}
+.formularioAddAnime__forn--descripcion::placeholder{ /*dexripcion*/
+    color: #b7bea4;
+    outline: none;
+}
+.formularioAddAnime__forn label{ /*label para seleccionar imagen local*/
+    cursor: pointer;
+    display: none;
+}
+#formularioAddAnime__imgLocal{ /*input file*/
+    display: none;
+}
+.formularioAddAnime__btnClose{ /*boton para cerrar el formulario*/
+    position: absolute;
+    top: 0;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #b7bea4;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.formularioAddAnime__err{ /*indicar que hay error*/
+    position: absolute;
+    top: 25px;
+    width: 80%;
+    background-color: #a90707;
+    color: #eeffbe;
+    padding: 6px;
+    margin-top: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: .3s;
+}
+.formularioAddAnime__errShow{
+    opacity: 1;
+    visibility: visible;
+    transition-duration: .3s;
+}
+
+
+
+/*renderizado de las imagenes*/
+.animesContent__animes{ /*contenedor de cada anime*/
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    width: 100px;
+    gap: 8px;
+}
+.animesContent__animes img{
+    width: 100%;
+    height: 65px;
+    object-fit: cover;
+}
+.animesContent__animes p{
+    color: #b7bea4;
+    width: 100%;
+    text-align: start;
+    font-size: .7em;
+}
+
+
+
+
+/*estilos del contenido de los animes*/
+.ContenidoAnime{ /*contenedor principal*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,#000000e7,#000000a0,#000000e7);
+    min-height: 500px;
+    transform: scale(1);
+    transition-duration: .5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0000004c;
+}
+.ContenidoAnimeHide{ /*ocultar contenedor*/
+    transform: scale(0);
+    transition-duration: .5s;
+}
+.ContenidoAnime__btnClose{ /*boton para cerrar*/
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 2em;
+    padding: 5px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #b7bea4;
+}
+.ContenidoAnime__info1{ /*contenedor de la informacion 1*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+.ContenidoAnime__img{ /*imagen del anime seleccionado*/
+    width: 120px;
+    height: 170px;
+    object-fit: cover;
+    margin-top: 25px;
+}
+.ContenidoAnime__title{ /*titulo*/
+    color: #b7bea4;
+}
+.ContenidoAnime__descripcion{ /*descripcion*/
+    color: #b7bea4;
+    width: 65%;
+    max-height: 85px;
+    overflow: auto;
+    padding: 15px;
+    border-radius: 5px;
+}
+.ContenidoAnime__descripcion::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+.ContenidoAnime__descripcion::-webkit-scrollbar-thumb{
+    background: linear-gradient(0deg,transparent,#1c1d1c,transparent);
+    border-radius: 1000px;
+}
+
+.ContenidoAnime__caps{/*contenedor de los capitulos*/
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.ContenidoAnime__caps::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+.ContenidoAnime__caps::-webkit-scrollbar-thumb{
+    background: linear-gradient(0deg,transparent,#1c1d1c,transparent);
+    border-radius: 1000px;
+}
+.ContenidoAnime__capitulos{ /*contenedor de cada capitulo*/
+    width: 95%;
+    background-color: #0e0e0e;
+    color: #b7bea4;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.ContenidoAnime__capitulos a{ /*redireccion de capitulos*/
+    color: #b7bea4;
+    font-size: 1em;
+    text-decoration: none;
+}
+.ContenidoAnime__capitulos button{ /*todos los botones de visto y no visto*/
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+.ContenidoAnime__capVisto{ /*boton para marcar*/
+    color: #0f0;
+}
+.ContenidoAnime__capLink{ /*boton para confimar link del cap*/
+    display: none;
+    color: #0f0;
+}
+.ContenidoAnime__capNoVisto{ /*boton para quitar el marcado*/
+    color: #f00;
+    display: none;
+}
+.ContenidoAnime__capInput{ /*inputs*/
+    background-color: transparent;
+    width: 60%;
+    border: 2px solid #1f201f;
+    padding: 4px;
+    color: #b7bea4;
+    outline: none;
+    border-radius: 1000px;
+    display: none;
+}
+.ContenidoAnime__capInput::placeholder{ /*inputs*/
+    color: #9a9f8b;
+}
+
+
+@media (min-width: 750px){
+    .animesContent__animesContent{ /*contenedor de la infp*/
+        justify-content: start;
+    }
+    .animesContent__animesContent button{ /*boton para agregar mas animes*/
+        width: 120px;
+        height: 120px;
+    }
+    .formularioAddAnime__forn{ /*contenedor de los datos*/
+        width: 350px;
+    }
+    .animesContent__animes{/*contenedor de cada anime*/
+        width: 130px;
+        height: 120px;
+    }
+    .animesContent__animes img{
+        margin-top: 4px;
+    }
+    .animesContent__animes p{
+        font-size: .8em;
+    }
+    .ContenidoAnime{ /*contenedor principal*/
+        flex-direction: row;
+        justify-content: center;
+    }
+    .ContenidoAnime__info1{ /*contenedor de la informacion 1*/
+        width: 45%;
+        gap: 30px;
+    }
+    .ContenidoAnime__title{ /*titulo*/
+        font-size: 2em;
+    }
+    .ContenidoAnime__descripcion{ /*descripcion*/
+        font-size: 1.5em;
+        width: 85%;
+        max-height: 150px;
+    }
+    .ContenidoAnime__descripcion::-webkit-scrollbar{
+        width: 10px;
+    }
+    .formularioAddAnime__err{ /*indicar que hay error*/
+        width: 350px;
+    }
+    .ContenidoAnime__img{ /*imagen del anime seleccionado*/
+        width: 150px;
+        height: 250px;
+    }
+    .ContenidoAnime__caps{/*contenedor de los capitulos*/
+        width: 30%;
+        align-items: center;
+        height: 90%;
+    }
+    .ContenidoAnime__caps::-webkit-scrollbar{
+        width: 10px;
+    }
+    .ContenidoAnime__capitulos{ /*contenedor de cada capitulo*/
+        width: 250px;
+    }
+}
