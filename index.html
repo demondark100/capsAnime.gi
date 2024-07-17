@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="./estilos/inicio.css">
     <link rel="stylesheet" href="./estilos/main.css">
+    <script src="https://kit.fontawesome.com/7e204a84d0.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -41,10 +42,10 @@
 
         <!-- animes -->
         <div class="animesContent">
-            <div class="animesContent__animesContent">
-                <button class="animesContent__btn">+</button>
-            </div>
+            <div class="animesContent__animesContent"></div>
         </div>
+        <button class="animesContent__btn">+</button>
+
         <!-- formulario de animes -->
         <div class="formularioAddAnime formularioAddAnimeHide ">
             <p class="formularioAddAnime__err">Debes rellenar todos los espacios correctamente y rellenar todos los espacios.</p>
@@ -87,14 +88,29 @@
                     placeholder="capitulos vistos"
                     class="formularioAddAnime__forn--vistos"
                 >
+                <!-- boyones para crear o editar -->
                 <input 
                     type="submit"
                     value="Crear animes"
                     class="formularioAddAnime__forn--btn"
                     style="cursor: pointer;"
                 >
+                <input 
+                    type="submit"
+                    value="Editar anime"
+                    class="formularioAddAnimeHide__btnEdit"
+                    style="cursor: pointer;"
+                >
             </form>
         </div>
+
+        <!-- opciones de cada anime -->
+         <div class="optionsContent optionsContentHide">
+            <div class="optionsContentBns">
+                <button class="optionsContentBnsEdit">Editar informacion</button>
+                <button class="optionsContentBnsDel">Eliminar anime</button>
+            </div>
+         </div>
 
         <div class="ContenidoAnime ContenidoAnimeHide">
             <button class="ContenidoAnime__btnClose">X</button>
@@ -112,6 +128,7 @@
     <!-- boton de inicio -->
     <script src="./scripts/inicio.js"></script>
     <!-- cargar imagenes de los animes -->
-    <script type="module" src="./scripts/imgs.js"></script>
+    <script src="./scripts/imgs.js"></script>
+    <script src="./scripts/opciones.jsx"></script>
 </body>
 </html>
