@@ -3,9 +3,6 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background-color: #0d0d0d;
-}
 
 
 /* cuando aun no hay resultados */
@@ -104,7 +101,7 @@ body{
 }
 .ExtendImage{ /*extender imagen*/
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     transition-duration: .3s;
 }
 .ExtendImage::before { /*escurecer umagen de fondo*/

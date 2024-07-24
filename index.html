@@ -6,11 +6,22 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="./estilos/inicio.css">
     <link rel="stylesheet" href="./estilos/main.css">
+    <link rel="stylesheet" href="./estilos/menu.css">
     <script src="https://kit.fontawesome.com/7e204a84d0.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <main>
+        
+        <!-- menu -->
+        <div class="menuContent">
+            <!-- boton para agregar animes -->
+            <button class="animesContent__btn">+</button>
+            <!-- boton para la configuracion -->
+            <button class="openSetting"><i class="fa-solid fa-gear"></i></button>
+        </div>
+
+
         <!-- presentacion -->
         <div class="inicioContent">
             <div class="inicioContent__info">
@@ -44,7 +55,7 @@
         <div class="animesContent">
             <div class="animesContent__animesContent"></div>
         </div>
-        <button class="animesContent__btn">+</button>
+
 
         <!-- formulario de animes -->
         <div class="formularioAddAnime formularioAddAnimeHide ">
@@ -112,6 +123,18 @@
             </div>
          </div>
 
+        <!-- confirma si desean eliminar un anume -->
+         <div class="deleteContent deleteContentHide">
+            <div class="deleteContent__question">
+                <h2>¿Deseas eliminar este anime?</h2>
+                <div class="deleteContent__question--btn">
+                    <button class="deleteConfirm">Si</button>
+                    <button class="deleteCancel">No</button>
+                </div>
+            </div>
+         </div>
+
+
         <div class="ContenidoAnime ContenidoAnimeHide">
             <button class="ContenidoAnime__btnClose">X</button>
             <div class="ContenidoAnime__info1">
@@ -121,6 +144,50 @@
             </div>
             <div class="ContenidoAnime__caps"></div>
         </div>
+
+        <!-- configuracion -->
+        <div class="settingContent settingContentHide">
+            <button class="settingContentClose">X</button>
+            <div class="settingContent__setCont">
+                <p>Mostrar inicio</p>
+                <button class="settingContent__btnShowStart">
+                    <span class="settingActive"></span>
+                </button>
+            </div>
+            <div class="settingContent__setCont">
+                <p>Cambiar fondo automaticameente</p>
+                <button class="settingContent__btnChangeBack">
+                    <span class="settingActive"></span>
+                </button>
+            </div>
+            <div class="settingContent__setCont settingContent__setContBack">
+                <p>Elige un fondo</p>
+                <button class="settingContent__setContBtn1"><i class="fa-solid fa-caret-down"></i></button>
+                <button class="settingContent__setContBtn2" style="display: none;"><i class="fa-solid fa-caret-up"></i></button>
+                <div class="settingContent__setContOptions">
+                    <button class="settingContent__setContOptionsBtn1">Seleccionar una imagen</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- elegir una imagen como fondo -->
+        <div class="fondoContentImgs fondoContentImgsHide">
+            <button class="fondoContentImgsBtnClose">X</button>
+            <!-- usar una imagen externa. -->
+            <div class="fondoContentImgsInput">
+                <input 
+                    class="fondoContentImgsInputText" 
+                    type="text"
+                    placeholder="Link de la imagen"
+                >
+                <button class="fondoContentImgsSend">Usar</button>
+            </div>
+            <!-- imagenes del sistema -->
+            <div class="fondoContentImgsSystem"></div>
+        </div>
+
+
+
     </main>
 
     <!-- cambiar de imagen al fondo -->
@@ -129,6 +196,8 @@
     <script src="./scripts/inicio.js"></script>
     <!-- cargar imagenes de los animes -->
     <script src="./scripts/imgs.js"></script>
-    <script src="./scripts/opciones.jsx"></script>
+    <script src="./scripts/opciones.js"></script>
+    <script src="./scripts/configuracion.js"></script>
+    <script src="./scripts/opcionesBackground.js"></script>
 </body>
 </html>

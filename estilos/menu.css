@@ -1,0 +1,266 @@
+.menuContent{ /*contenedor principal*/
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    height: 45px;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid #f00;
+}
+
+.menuContent button{ /*boton para agregar mas animes*/
+    background-color: transparent;
+    color: #b7bea4;
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #f00;
+}
+
+@media (min-width: 750px) {
+    .menuContent{ /*contenedor principal*/
+        height: 100%;
+        width: 35px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding-top: 15px;
+        border: none;
+        border-right: 2px solid #f00;
+    }
+}
+
+
+
+/*estilos de la configuracion*/
+.settingContent{ /*contenedor principal*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 1;
+    min-height: 450px;
+    opacity: 1;
+    visibility: visible;
+    transition-duration: .3s;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 50px;
+    align-items: center;
+}
+.settingContentHide{
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: .3s;
+}
+.settingContentClose{ /*boton para cerrar el apartado de configuracion*/
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    border: none;
+    outline: none;
+    color: #b7bea4;
+    background-color: transparent;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.settingContent__setCont{ /*contenedor de cada opcion de la configuracion*/
+    background-color: #1f201f;
+    width: 90%;
+    padding: 8px;
+    border-radius: 8px;
+    color: #b7bea4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition-duration: .5s;
+}
+.settingContent__setCont button{ /*botones de las configuraciones*/
+    position: relative;
+    width: 40px;
+    height: 22px;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    border-radius: 1000px;
+    cursor: pointer;
+    color: #b7bea4;
+    font-size: 1em;
+}
+.settingContent__setCont button span{ /*indicador desactivado*/
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    box-shadow: 0 0 8px 0px #fff;
+    top: -2px;
+    border-radius: 1000px;
+}
+.settingDesactive{
+    left: 0;
+}
+.settingActive{  /*indicador activado*/
+    right: 0;
+}
+
+
+
+
+/*opciones del background en la configuracion*/
+.contenedorBackContHide{ /*ocular contenedor cuando no este activa la funcion de cambio de imagen dinamico*/
+    pointer-events: none;
+    filter: brightness(.5);
+    user-select: none;
+}
+
+.settingContent__setContBackShow{
+    align-items: start;
+    height: 80px;
+}
+
+.settingContent__setContBtn1{/*boton para abrir las opciones de fondo en configuracion*/
+    font-size: 1em;
+}
+
+.settingContent__setContOptions{ /*contenedor de kas opciones extra*/
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+.settingContent__setContOptions button{ /*botones*/
+    width: 80%;
+}
+
+@media(min-width: 750px){
+    .settingContent{ /*contenedor principal*/
+        padding-top: 15px;
+    }
+    .settingContentClose{ /*boton para cerrar el apartado de configuracion*/
+        font-size: 2em;
+    }
+    .settingContent__setCont{ /*contenedor de cada opcion de la configuracion*/
+        width: 350px;
+    }
+    .settingContent__setContOptions button{ /*botones*/
+        width: 200px;
+    }
+}
+
+
+
+
+/*opciones del background*/
+
+.fondoContentImgs /*contenedor de las imagens*/{
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+    transition-duration: .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 450px;
+    gap: 25px;
+}
+.fondoContentImgsHide{ /*ocultar sistema de eleccion de imagenes*/
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: .3;
+}
+
+.fondoContentImgsBtnClose{ /*boton para cerrar el contenedor del seleccionde img*/
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: transparent;
+    color: #b7bea4;
+    font-size: 1.5em;
+    border: none;
+    outline: none;
+}
+
+
+.fondoContentImgsInput{ /*contenedor del input*/
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+.fondoContentImgsInputText{ /*input*/
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #b7bea4;
+    border-left: 2px solid #b7bea4;
+    padding: 8px;
+    border-radius: 50px;
+    color: #b7bea4;
+}
+.fondoContentImgsInputText::placeholder{
+    color: #a8ac9f;
+}
+
+.fondoContentImgsSend{ /* boton para enviar la imagen*/
+    background-color: transparent;
+    color: #b7bea4;
+    width: 80px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #b7bea4;
+    border-right: 2px solid #b7bea4;
+    padding: 8px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.fondoContentImgsSystem{/*contenedor de las imagenes*/
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    gap: 15px;
+    align-content: start;
+    justify-content: center;
+    padding-top: 15px;
+}
+.fondoContentImgsSystem img{ /*imagenes*/
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    transition-duration: .3s;
+}
+
+.fondoContentImgsSystem img:hover{
+    filter: brightness(.5) !important;
+    transition-duration: .3s;
+}
+
+
+@media(min-width: 750px){
+    .fondoContentImgsSystem img{ /*imagenes*/
+        width: 150px;
+        height: 80px;
+    }
+}

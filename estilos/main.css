@@ -1,14 +1,19 @@
+body{
+    background-color: #000;
+}
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    width: 100%;
 }
 .animesContent{ /*contenedor principal*/
     position: absolute;
-    top: 0;
+    top: 50px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 92%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,20 +29,7 @@ main{
     justify-content: center;
 }
 
-.animesContent__btn{ /*boton para agregar mas animes*/
-    background-color: #0000008a;
-    border: none;
-    outline: none;
-    color: #eeffbe;
-    font-size: 2em;
-    width: 40px;
-    height: 40px;
-    backdrop-filter: blur(8px);
-    cursor: pointer;
-    position: fixed;
-    bottom: 8px;
-    margin: auto;
-}
+
 
 
 
@@ -58,7 +50,8 @@ main{
     visibility: visible;
     transition-duration: .8s;
     overflow: hidden;
-    min-height: 480px;
+    min-height: 450px;
+    z-index: 2;
 }
 .formularioAddAnimeHide{ /*ocultar contenedor principañ*/
     opacity: 0;
@@ -77,10 +70,10 @@ main{
     position: absolute;
     bottom: 0;
     transition-duration: .5s;
-    padding-top: 25px;
 }
 .formularioAddAnime__fornHide{
     bottom: -100%;
+    padding: 0;
     transition-duration: .5s;
 }
 .formularioAddAnime__forn--img{ /*seleccionar un tipo de imagen*/
@@ -238,7 +231,7 @@ main{
 }
 .animesContent__animes p{ /*titulo del anime*/
     color: #b7bea4;
-    width: 100%;
+    width: 90%;
     text-align: start;
     font-size: .7em;
 }
@@ -268,17 +261,20 @@ main{
     width: 100%;
     height: 100%;
     background: linear-gradient(180deg,#000000e7,#000000a0,#000000e7);
-    min-height: 500px;
-    transform: scale(1);
-    transition-duration: .5s;
+    min-height: 450px;
+    transition-duration: .8s;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #0000004c;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
 }
 .ContenidoAnimeHide{ /*ocultar contenedor*/
-    transform: scale(0);
-    transition-duration: .5s;
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: .8s;
 }
 .ContenidoAnime__btnClose{ /*boton para cerrar*/
     background-color: transparent;
@@ -392,14 +388,64 @@ main{
 }
 
 
+/*estilos para eliminar un anime*/
+.deleteContent{ /*contenedor principal*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000006b;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px;
+    opacity: 1;
+    visibility: visible;
+    transition-duration: .3s;
+}
+.deleteContentHide{
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: .3s;
+}
+.deleteContent__question{ /*contenedor de la pregunta y los botone*/
+    width: 85%;
+    background-color: #252725;
+    padding: 8px;
+    color: #b7bea4;
+    font-size: .8em;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.deleteContent__question--btn{ /*contenedor de los botones*/
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}
+.deleteContent__question--btn button{ /*botones*/
+    background-color: transparent;
+    border: none !important;
+    outline: none;
+    color: #b7bea4;
+}
+
+
+
+
+
+
 @media (min-width: 750px){
+    .animesContent{ /*contenedor principal*/
+        top: 0;
+        left: 35px;
+        height: 100%;
+        width: 95%;
+    }
     .animesContent__animesContent{ /*contenedor de la infp*/
         justify-content: start;
-    }
-    .animesContent__btn{ /*boton para agregar mas animes*/
-        width: 80px;
-        height: 80px;
-        bottom: 15px;
     }
     .formularioAddAnime__forn{ /*contenedor de los datos*/
         width: 350px;
@@ -453,5 +499,8 @@ main{
     }
     .ContenidoAnime__capitulos{ /*contenedor de cada capitulo*/
         width: 250px;
+    }
+    .deleteContent__question{ /*contenedor de la pregunta y los botone*/
+        width: 300px;
     }
 }

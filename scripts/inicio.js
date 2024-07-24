@@ -33,9 +33,17 @@ btnInicio.addEventListener("click",()=>{
 showInicio__btn1.addEventListener("click",()=>{
     localStorage.setItem("showPregunta",false)
     showInicio.classList.add("hideInicio")
+    localStorage.setItem("setting1",true)
+    localStorage.setItem("setting2",true)
 })
 showInicio__btn2.addEventListener("click",()=>{
     localStorage.setItem("showPregunta",false)
+    localStorage.setItem("setting2",JSON.stringify(true))
+    settingPosition(indicadorSetting[0],"d")
     showInicio.classList.add("hideInicio")
     localStorage.setItem("showInicio",false)
+    moveSetting(cambio2,indicadorSetting[1])
+    contenedorBackCont.classList.add("contenedorBackContHide")
+
+
 })

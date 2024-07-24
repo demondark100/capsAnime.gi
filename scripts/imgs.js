@@ -56,7 +56,6 @@ let contenido = [];
           cursor.result.continue();
         } else {
           loadData(contenido);
-          console.log(contenido)
         }
       })
   }
@@ -103,6 +102,13 @@ let contenido = [];
     const ContenidoAnime__title = document.querySelector(".ContenidoAnime__title") // titulo
     const ContenidoAnime__descripcion = document.querySelector(".ContenidoAnime__descripcion") // descripcion
     const ContenidoAnime__caps = document.querySelector(".ContenidoAnime__caps"); // capitulos de los animes.
+  
+  // opciones para eliminar animes.
+    const contentDelete = document.querySelector(".deleteContent"); // contenedor para eliminar animes
+    const btnDeleteConfirm = document.querySelector(".deleteConfirm") // boton de eliminar confimado
+    const btnDeleteCancel = document.querySelector(".deleteCancel") // boton de cancelar eliminacion de anime. 
+
+
 
   // variables para usar mas edelante
     let ruta = ""; // cambiar las rutas de los archivos locales.
@@ -148,19 +154,45 @@ let contenido = [];
 
   // agregar mas animes para apuntar capitulos o editar los animes
     more.addEventListener("click",()=>openCloseForm("open","create"));
+  
+
   // funcion para cerrar las opciones del anime.
     contentOptions.addEventListener("click",()=>contentOptions.classList.add("optionsContentHide"))
     opcionEdit.addEventListener("click",()=>editContent(indexOption))
+    opcionDel.addEventListener("click",()=>closeOpenDelete("open"))
 
 
   // cerrar el contenido de cada anime.
     closeContent.addEventListener("click",()=>ContenidoAnime.classList.add("ContenidoAnimeHide"))
+
+  // cancelar eliminacion de anime.
+    btnDeleteCancel.addEventListener("click",()=>closeOpenDelete("close"));
+    btnDeleteConfirm.addEventListener("click",()=>deleteAnime())
+
 
 
 
 
 
   // funciones
+
+
+  // funcion para cerrar el contenedor de la pregunta para eliminar el anime seleccionado.
+    function closeOpenDelete(make) {
+      if (make === "open") {
+        contentDelete.classList.remove("deleteContentHide")
+      } else{
+        contentDelete.classList.add("deleteContentHide")
+      }
+    }
+    function deleteAnime() {
+      eliminarObjeto(contenido[indexOption].id)
+      contenido.splice(indexOption,1);
+      closeOpenDelete("close");
+      animesContent__animesContent.innerHTML = "";
+      contenido = [];
+      showObjects();
+    }
 
 
   // funcion para validar los campos del formularios para agregar o editar algun anime.
@@ -192,7 +224,7 @@ let contenido = [];
         contenido[indexOption].descripcion = descripcion.value
         contenido[indexOption].localImg = ruta
         contenido[indexOption].linkImg = linkImg.value
-        contenido[indexOption].vistos = vistos.value || 0
+        contenido[indexOption].capsVistos = vistos.value || 0
         editarObjeto(contenido[indexOption],contenido[indexOption].id)
       }
       openCloseForm("close","create")
@@ -209,7 +241,6 @@ let contenido = [];
     }
   }
 
-  // ire a jugar un rato left 4 dead, el objetivo ahora es preguntar si desea eliminar un anime, si es asi entonces usamos la funcion delete de la base de datos para eliminar ese dato usando los id de la base de datos, regreso en 15 min aqui abajo estara la funcion para lograr este objetivo.
 
 
 // funcion para resetear los valores de los inputs en el formulario.
@@ -298,7 +329,7 @@ let contenido = [];
 
 
 
-  // editar eñ contenido de un anime y guardarlo en la base de datos
+  // editar el contenido de un anime y guardarlo en la base de datos
   function editContent(index) {
     openCloseForm("open","edit")
 
@@ -312,7 +343,7 @@ let contenido = [];
   }
 
 
-
+  // funcion para agregar los capitulos de cada anime y poner cuantos capitulos se han visto.
   function addCaps(index) {
     ContenidoAnime.classList.remove("ContenidoAnimeHide");
     ContenidoAnime__img.src = contenido[index].linkImg || contenido[index].localImg
@@ -321,8 +352,32 @@ let contenido = [];
     let cantidad = parseInt(contenido[index].capitulos);
     ContenidoAnime__caps.innerHTML = ""
     addCapitulosDom(cantidad,index)
-    recuperarDatos(index)
+    let vistos = parseInt(contenido[index].capsVistos);
+    if (vistos == 0) {
+      for (let i = 0; i < contenido[index].arrVistos.length; i++) {
+        contenido[index].arrVistos[i] = ["#",i,"hide"]
+      }
+    }
+    if (contenido[index].arrVistos.length === 0) {
+      for (let i = 0; i < vistos; i++) {
+        contenido[index].arrVistos[i] = ["#",i,"show"]
+      }
+    } else {
+      for (let i = 0; i < vistos; i++) {
+        if (contenido[index].arrVistos[i] == undefined) {
+          contenido[index].arrVistos[i] = ["#",i,"show"]
+        }
+        setTimeout(() => {
+          if (contenido[index].arrVistos[i][0] == "#") {
+            contenido[index].arrVistos[i] = ["#",i,"show"]
+          }
+        }, 100);
+      }
+    }
+    setTimeout(() =>recuperarDatos(index), 100);
   }
+
+
 
 
 
@@ -434,6 +489,8 @@ let contenido = [];
         }
       }, 100);
     }
+    let vistos = cap + 1;
+    contenido[indAni].capsVistos = vistos;
     link[cap].href = inputCap[cap].value;
     link[cap].style.color = "#f6ffdf"
     link[cap].style.textShadow = "0 0 15px #f6ffdf"
@@ -454,21 +511,22 @@ let contenido = [];
     const delete_ = document.querySelectorAll(".ContenidoAnime__capNoVisto")
     changeDisplay(delete_[cap],"n")
     changeDisplay(marcadores[cap],"b")
-
     contenedor[cap].style.backgroundColor = "#0e0e0e"
-    for (let i = 0; i < contenido[indAni].arrVistos.length; i++) {
-      if (contenido[indAni].arrVistos[i][1] >= cap) {
-        contenedor[contenido[indAni].arrVistos[i][1]].style.backgroundColor = "#0e0e0e"
-        changeDisplay(delete_[contenido[indAni].arrVistos[i][1]],"n")
-        changeDisplay(marcadores[contenido[indAni].arrVistos[i][1]],"b")
-        contenido[indAni].arrVistos[i] = ["#",i,"hide"]
-        link[i].style.textShadow = "none"
-        link[i].style.color = "#b7bea4"
-        link[i].removeAttribute("href")
+    for (let i = 0; i < contenido[indAni].capitulos; i++) {
+      if (contenido[indAni].arrVistos[i] != undefined) {
+        if (contenido[indAni].arrVistos[i][1] >= cap) {
+          contenedor[contenido[indAni].arrVistos[i][1]].style.backgroundColor = "#0e0e0e"
+          changeDisplay(delete_[contenido[indAni].arrVistos[i][1]],"n")
+          changeDisplay(marcadores[contenido[indAni].arrVistos[i][1]],"b")
+          contenido[indAni].arrVistos[i] = ["#",i,"hide"]
+          link[i].style.textShadow = "none"
+          link[i].style.color = "#b7bea4"
+          link[i].removeAttribute("href")
+        } 
       }
     }
-    let indice = parseInt(indAni) + 1
-    editarObjeto(contenido[indAni],indice)
+    contenido[indAni].capsVistos = cap;
+    editarObjeto(contenido[indAni],contenido[indAni].id)
   }
 
 
@@ -480,20 +538,24 @@ let contenido = [];
     const inputCap = document.querySelectorAll(".ContenidoAnime__capInput");
     const link = document.querySelectorAll(".ContenidoAnime__capLinkA");
     const delete_ = document.querySelectorAll(".ContenidoAnime__capNoVisto")
-    contenido[i].arrVistos.forEach((cap,rec) => {
-      if (cap[2] == "show") {
-        contenedor[rec].style.backgroundColor = "#003100"
-        changeDisplay(marcadores[rec],"n")
-        changeDisplay(delete_[rec],"b")
-        if (cap[0] != "#") {
-          link[rec].href = cap[0];
-          link[rec].style.color = "#f6ffdf"
-          link[rec].style.textShadow = "0 0 15px #f6ffdf"
+
+    for (let cap = 0; cap < contenido[i].capsVistos; cap++) {
+      if (contenido[i].arrVistos[cap][2] == "show") {
+        contenedor[cap].style.backgroundColor = "#003100"
+        changeDisplay(marcadores[cap],"n")
+        changeDisplay(delete_[cap],"b")
+        if (contenido[i].arrVistos[cap][0] != "#") {
+          link[cap].href = contenido[i].arrVistos[cap][0];
+          link[cap].style.color = "#f6ffdf"
+          link[cap].style.textShadow = "0 0 15px #f6ffdf"
         }
       } else {
-        contenedor[rec].style.backgroundColor = "#0e0e0e"
-        changeDisplay(marcadores[rec],"b")
-        changeDisplay(delete_[rec],"n")
-      }
-    });
+        contenedor[cap].style.backgroundColor = "#0e0e0e"
+        changeDisplay(marcadores[cap],"b")
+        changeDisplay(delete_[cap],"n")
+      } 
+    }
+
   }
+
+
